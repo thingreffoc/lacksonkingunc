@@ -64,10 +64,10 @@ namespace GorillaNetworking
 
 		public void Awake()
 		{
-			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "b93dcdea-ad80-4f38-9259-42d9874030c5";
-			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdVoice = "7c6d4c04-5743-4eec-bd92-439d49a84ba3";
+			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime = "4c33e178-fb25-4f0c-88f9-878d5f2e4886";
+			PhotonNetwork.PhotonServerSettings.AppSettings.AppIdVoice = "974a49c7-b963-46ac-b807-29d64924d8c5";
 			PhotonNetwork.PhotonServerSettings.AppSettings.AppVersion = "live1110";
-			PlayFabSettings.TitleId = "900AC";
+			PlayFabSettings.TitleId = "171AD9";
 			if (instance == null)
 			{
 				instance = this;
@@ -77,7 +77,7 @@ namespace GorillaNetworking
 				UnityEngine.Object.Destroy(base.gameObject);
 			}
 			byte[] payload = new byte[1];
-			PlayFabHttp.SimplePostCall("https://63FDD.playfabapi.com/", payload, delegate
+			PlayFabHttp.SimplePostCall("https://171AD9.playfabapi.com/", payload, delegate
 			{
 			}, delegate
 			{
@@ -264,15 +264,8 @@ namespace GorillaNetworking
 			PlayFabClientAPI.LoginWithCustomID(new LoginWithCustomIDRequest
 			{
 				CreateAccount = true,
-				CustomId = PlayFabSettings.DeviceUniqueIdentifier
+				CustomId = SystemInfo.deviceUniqueIdentifier
 			}, RequestPhotonToken, OnPlayFabError);
-		}
-		void Start()
-		{
-			if (PlayFabSettings.TitleId != expectedTitleID)
-			{
-				Application.Quit();
-			}
 		}
 	}
 }
